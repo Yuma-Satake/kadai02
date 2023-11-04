@@ -7,6 +7,7 @@ $products = selectProducts();
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,15 +19,18 @@ $products = selectProducts();
 
 <body>
   <div class="container bg-warning-subtle border border-3 border-primary">
-    <div class="row border border-3 border-secondary"><!-- ナビゲーションバーの読み込み -->
+    <div class="row border border-3 border-secondary">
+      <!-- ナビゲーションバーの読み込み -->
       <?php readfile("../navbar.html"); ?>
     </div>
-    <div class="row border border-3 border-secondary"><!-- header -->
+    <div class="row border border-3 border-secondary">
+      <!-- header -->
       <div class="col-12">
-        <h1>タイトル</h1>
+        <h1>無限ポップコーン</h1>
       </div>
     </div>
-    <div class="row border border-3 border-secondary"><!-- products list -->
+    <div class="row border border-3 border-secondary">
+      <!-- products list -->
       <table class="table table-warning table-striped table-hover">
         <thead>
           <tr>
@@ -49,13 +53,10 @@ $products = selectProducts();
         </tbody>
       </table>
     </div>
-
     <div class="row">
       <div class="col-12"> (c) We are Unknown Fried Pan!!</div>
     </div>
-
   </div>
-
   <!-- Bootstrap JavaScriptの読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

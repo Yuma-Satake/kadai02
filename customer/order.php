@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $odata = [
         'pcode' => $_POST['pcode'], 'oquantity' => $_POST['oquantity'], 'odelidate' => $_POST['odelidate'], 'cname' => $_POST['cname'], 'cmail' => $_POST['cmail']
     ];
+    insOrder($odata);
 }
 
 // YYYY-MM-DD HH:MM:DD形式で全パターン作成
@@ -29,7 +30,7 @@ foreach ($dates as $d) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>【公式】あなたの知らない揚げパンの世界</title>
+    <title>無限ポップコーン</title>
     <!-- Bootstrap CSSの読み込み -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -38,7 +39,8 @@ foreach ($dates as $d) {
 
 <body>
     <div class="container border border-3 border-primary bg-warning-subtle">
-        <div class="row border border-3 border-info"><!-- ナビゲーションバー -->
+        <div class="row border border-3 border-info">
+            <!-- ナビゲーションバー -->
             <?php readfile('../navbar.html') ?>
         </div>
 
@@ -47,7 +49,8 @@ foreach ($dates as $d) {
                 <h1 class="p-2">よかったら注文していってね</h1>
             </div>
         </div>
-        <div class="row border border-3 border-info p-5"><!-- 注文フォーム -->
+        <div class="row border border-3 border-info p-5">
+            <!-- 注文フォーム -->
             <form action="order.php" method="POST">
                 <div id="nameHelp" class="form-text">お名前を入力してください</div>
                 <input type="text" class="form-control" name="cname" aria-describedby="nameHelp">
