@@ -1,6 +1,7 @@
 <?php
 
-function dbConnect() {
+function dbConnect()
+{
     $host = 'localhost';
     $dbname = 'seminar2db';
     $username = 'root';
@@ -13,7 +14,8 @@ function dbConnect() {
     }
 }
 
-function selectProducts() {
+function selectProducts()
+{
     $pdo = dbConnect();
     try {
         $stmt = $pdo->prepare("SELECT * FROM PRODUCTS ORDER BY PCODE");
@@ -34,7 +36,8 @@ function selectProducts() {
     return $products;
 }
 
-function insOrder($data) {
+function insOrder($data)
+{
     $pdo = dbConnect();
     $stmt = $pdo->prepare("SELECT COALESCE(MAX(ORDNO), 0) + 1 AS newordno FROM orders");
     $stmt->execute();
