@@ -1,9 +1,11 @@
 <?php
 include('../dbfunc.php');
+$products = selectProducts();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $trimedOdelidate = str_replace(chr(0xC2), chr(0xA0), $_POST['odelidate']);
     $odata = [
-        'pcode' => $_POST['pcode'], 'oquantity' => $_POST['oquantity'], 'odelidate' => $_POST['odelidate'], 'cname' => $_POST['cname'], 'cmail' => $_POST['cmail']
+        'pcode' => $_POST['pcode'], 'oquantity' => $_POST['oquantity'], 'odelidate' => $trimedOdelidate,  'cname' => $_POST['cname'], 'cmail' => $_POST['cmail']
     ];
     insOrder($odata);
 }
