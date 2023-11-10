@@ -52,3 +52,7 @@ function insOrder($data)
     $stmt->bindValue(':cmail', $data['cmail'], PDO::PARAM_STR);
     $stmt->execute();
 }
+
+function updOrder($ordno)
+{
+}
