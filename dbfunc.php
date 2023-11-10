@@ -61,7 +61,7 @@ function selectOrders()
 {
     $pdo = dbConnect();
     try {
-        $stmt = $pdo->prepare("SELECT ORDNO, PNAME, QUANTITY, ODELIDATE, CNAME, CMAIL FROM ORDERS INNER JOIN PRODUCTS USING (PCODE) WHERE OACTELIDATE IS NULL ORDER BY ODELIDATE , ORDNO");
+        $stmt = $pdo->prepare("SELECT ORDNO,PNAME,OQUANTITY,ODELIDATE,CNAME,CMAIL FROM ORDERS INNER JOIN PRODUCTS USING(PCODE) WHERE OACTDELIDATE IS NULL ORDER BY ODELIDATE,ORDNO ");
         $stmt->execute();
     } catch (PDOException $e) {
         echo $e->getMessage();
