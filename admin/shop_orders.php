@@ -13,6 +13,7 @@ $orders = selectOrders();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="5; url=shop_orders.php">
     <title>【公式】あなたの知らない揚げパンの世界</title>
     <!-- Bootstrap CSSの読み込み -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -47,15 +48,15 @@ $orders = selectOrders();
                 <tbody>
                     <?php foreach ($orders as $record) { ?>
                         <tr>
-                            <td><?= $record['odelidate'] ?></td>
-                            <td><?= $record['pname'] ?></td>
-                            <td><?= $record['quantity'] ?></td>
-                            <td><?= $record['cname'] ?></td>
-                            <td><?= $record['cmail'] ?></td>
+                            <td><?php echo $record['ODELIDATE'] ?></td>
+                            <td><?php echo $record['PNAME'] ?></td>
+                            <td><?php echo $record['OQUANTITY'] ?></td>
+                            <td><?php echo $record['CNAME'] ?></td>
+                            <td><?php echo $record['CMAIL'] ?></td>
                             <td>
                                 <form action="shop_orders.php" method="POST">
                                     <input type="hidden" name="ordno" value="<?php echo $record['ORDNO']; ?>">
-                                    <button type="submit" class="btn btn-primary">引き渡し完了</button>
+                                    <button type="submit" class="btn btn-primary">渡した</button>
                                 </form>
                             </td>
                         </tr>
@@ -64,6 +65,7 @@ $orders = selectOrders();
             </table>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>
