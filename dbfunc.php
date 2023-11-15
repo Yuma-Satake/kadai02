@@ -45,7 +45,10 @@ function insOrder($data)
     $stmt->execute();
     $newordno = $stmt->fetch(PDO::FETCH_ASSOC)['newordno'];
 
-    $stmt = $pdo->prepare('INSERT INTO ORDERS(ORDNO,ORDDATE,PCODE,OQUANTITY,ODELIDATE,OACTDELIDATE,CNAME,CMAIL)VALUES( :ordno, SYSDATE() ,:pcode,:oquantity,:odelidate,NULL,:cname,:cmail)');
+    $stmt = $pdo->prepare(
+        'INSERT INTO ORDERS(ORDNO,ORDDATE,PCODE,OQUANTITY,ODELIDATE,OACTDELIDATE,CNAME,CMAIL)
+        VALUES( :ordno, SYSDATE() ,:pcode,:oquantity,:odelidate,NULL,:cname,:cmail)'
+    );
     $stmt->bindValue(':ordno', $newordno, PDO::PARAM_INT);
     $stmt->bindValue(':pcode', $data['pcode'], PDO::PARAM_STR);
     $stmt->bindValue(':oquantity', $data['oquantity'], PDO::PARAM_INT);
@@ -80,4 +83,22 @@ function updOrder($ordno)
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
+}
+
+function insProduct($data)
+{
+    $pdo = dbConnect();
+
+    $stmt = $pdo->prepare(
+        'INSERT INTO PRODUCTS(PCODE,PNAME,PDESC,PPRICE,PFILENAME)
+                     VALUES( :pcode,:pname,:pdesc,:pprice,:pfilename)'
+    );
+
+    $stmt->bindValue(':pcode', $data['pcode'], PDO::PARAM_STR);
+    $stmt->bindValue(':pname', $data['pname'], PDO::PARAM_STR);
+    $stmt->bindValue(':pdesc', $data['pdesc'], PDO::PARAM_STR);
+    $stmt->bindValue(':pprice', $data['pprice'], PDO::PARAM_INT);
+    $stmt->bindValue(':pfilename', $data['pfilename'], PDO::PARAM_STR);
+
+    $stmt->execute();
 }
