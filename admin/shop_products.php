@@ -1,16 +1,27 @@
 <?php
 include('../dbfunc.php');
 
-$pdata = [
-    'pcode' => $_POST['pcode'],
-    'pname' => $_POST['pname'],
-    'pdesc' => $_POST['pdesc'],
-    'pprice' => $_POST['pprice'],
-    'pfilename' => $_POST['pfilename']
-];
-
-insProduct($pdata)
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_POST['mode'] === 'insert') {
+        $pdata = [
+            'pcode' => $_POST['pcode'],
+            'pname' => $_POST['pname'],
+            'pdesc' => $_POST['pdesc'],
+            'pprice' => $_POST['pprice'],
+            'pfilename' => $_POST['pfilename']
+        ];
+        insProduct($pdata);
+    } else if ($_POST['mode'] === 'update') {
+        $pdata = [
+            'pcode' => $_POST['pcode'],
+            'pname' => $_POST['pname'],
+            'pdesc' => $_POST['pdesc'],
+            'pprice' => $_POST['pprice'],
+            'pfilename' => $_POST['pfilename']
+        ];
+        // updProduct($pdata);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -38,6 +49,17 @@ insProduct($pdata)
         </div>
         <div class="row border border-3 border-info p-5">
             <form action="shop_products.php" method="POST">
+                <input type="hidden" name="mode" value="insert">
+                <label for="pcode">商品コード（半角4桁）</label>
+                <input type='text' class="form-control" name='pcode' id="pcode">
+                <label for="pname">商品名</label>
+                <input type='text' class="form-control" name='pname' id="pname">
+                <label for="pdesc">商品概要</label>
+                <textarea class="form-control" name="pdesc" id="pdesc" rows="3"></textarea>
+                <label for="pprice">商品単価</label>
+                <input type='text' class="form-control" name='pprice' id="pprice">
+                <label for="pfilename">ファイル名</label>
+                <input type='text' class="form-control" name='pfilename' id="pfilename" style="margin-bottom: 15px;">
                 <button type="submit" class="btn btn-primary">新規登録</button>
             </form>
         </div>
@@ -56,6 +78,7 @@ insProduct($pdata)
                     <?php foreach ($products as $record) { ?>
                         <tr class="p-2">
                             <form action="shop_products.php" method="POST">
+                                <input type="hidden" name="mode" value="update">
                                 <td>
                                     <button type="submit" class="btn btn-primary">更新</button>
                                 </td>
