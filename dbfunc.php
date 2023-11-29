@@ -102,3 +102,20 @@ function insProduct($data)
 
     $stmt->execute();
 }
+
+function updProduct($data)
+{
+    $pdo = dbConnect();
+
+    $stmt = $pdo->prepare(
+        'UPDATE PRODUCTS SET PNAME = :pname, PDESC = :pdesc, PPRICE = :pprice, PFILENAME = :pfilename WHERE PCODE = :pcode'
+    );
+
+    $stmt->bindValue(':pcode', $data['pcode'], PDO::PARAM_STR);
+    $stmt->bindValue(':pname', $data['pname'], PDO::PARAM_STR);
+    $stmt->bindValue(':pdesc', $data['pdesc'], PDO::PARAM_STR);
+    $stmt->bindValue(':pprice', $data['pprice'], PDO::PARAM_INT);
+    $stmt->bindValue(':pfilename', $data['pfilename'], PDO::PARAM_STR);
+
+    $stmt->execute();
+}

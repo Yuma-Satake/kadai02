@@ -2,26 +2,22 @@
 include('../dbfunc.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pdata = [
+        'pcode' => $_POST['pcode'],
+        'pname' => $_POST['pname'],
+        'pdesc' => $_POST['pdesc'],
+        'pprice' => $_POST['pprice'],
+        'pfilename' => $_POST['pfilename']
+    ];
     if ($_POST['mode'] === 'insert') {
-        $pdata = [
-            'pcode' => $_POST['pcode'],
-            'pname' => $_POST['pname'],
-            'pdesc' => $_POST['pdesc'],
-            'pprice' => $_POST['pprice'],
-            'pfilename' => $_POST['pfilename']
-        ];
         insProduct($pdata);
-    } else if ($_POST['mode'] === 'update') {
-        $pdata = [
-            'pcode' => $_POST['pcode'],
-            'pname' => $_POST['pname'],
-            'pdesc' => $_POST['pdesc'],
-            'pprice' => $_POST['pprice'],
-            'pfilename' => $_POST['pfilename']
-        ];
-        // updProduct($pdata);
+    } elseif ($_POST['mode'] === 'update') {
+        updProduct($pdata);
     }
 }
+
+$products  = selectProducts();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -79,6 +75,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <tr class="p-2">
                             <form action="shop_products.php" method="POST">
                                 <input type="hidden" name="mode" value="update">
+                                <input type="hidden" name="pcode" value="<?php echo $record['pcode'] ?>">
+                                <td>
+                                    <input type='text' class="form-control" name='pname' id="pname" value="<?php echo $record['pname'] ?>">
+                                </td>
+                                <td>
+                                    <textarea class="form-control" name="pdesc" id="pdesc" rows="10"><?php echo $record['pdesc'] ?></textarea>
+                                </td>
+                                <td>
+                                    <input type='text' class="form-control" name='pprice' id="pprice" value="<?php echo $record['pprice'] ?>">
+                                </td>
+                                <td>
+                                    <img class="img-fluid" src="../images/ rounded <?php echo $record['pfilename'] ?>" alt="<?php echo $record['pfilename'] ?>">
+                                    <?php echo $record['pfilename'] ?>
                                 <td>
                                     <button type="submit" class="btn btn-primary">更新</button>
                                 </td>
