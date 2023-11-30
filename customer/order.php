@@ -88,7 +88,7 @@ foreach ($dates as $d) {
                     ?>
                 </select>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" style="margin-top: 15px;">注文する</button>
             </form>
         </div>
         <div class="row border border-3 border-info table-responsive">
@@ -109,7 +109,7 @@ foreach ($dates as $d) {
                             <td><?php echo $record['pname']; ?></td>
                             <td><?php echo $record['pdesc']; ?></td>
                             <td><?php echo $record['pprice'] . '円'; ?></td>
-                            <td><img class="img-fluid rounded myProdImg" src="../images/<?php echo $record['pfilename']; ?>" alt=商品イメージ></td>
+                            <td><img class="img-fluid rounded" src="../images/<?php echo $record['pfilename']; ?>"></td>
                         </tr>
                     <?php } ?>
                 </tbody>

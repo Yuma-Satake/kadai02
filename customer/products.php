@@ -47,7 +47,7 @@ $products = selectProducts();
               <td><?php echo $record['pname'] ?></td>
               <td><?php echo $record['pdesc'] ?></td>
               <td><?php echo $record['pprice'] ?></td>
-              <td><img class="img-fluid rounded" src="../images/<?php echo $record['pfilename'] ?>"></td>
+              <td><img class="img-fluid rounded" src="../images/<?php echo $record['pfilename']; ?>"></td>
             </tr>
           <?php } ?>
         </tbody>

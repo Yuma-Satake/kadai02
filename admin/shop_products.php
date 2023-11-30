@@ -86,7 +86,7 @@ $products  = selectProducts();
                                     <input type='text' class="form-control" name='pprice' id="pprice" value="<?php echo $record['pprice'] ?>">
                                 </td>
                                 <td>
-                                    <img class="img-fluid" src="../images/ rounded <?php echo $record['pfilename'] ?>" alt="<?php echo $record['pfilename'] ?>">
+                                    <img class="img-fluid" src="../images/<?php echo $record['pfilename'] ?>" alt="<?php echo $record['pfilename'] ?>">
                                     <?php echo $record['pfilename'] ?>
                                 <td>
                                     <button type="submit" class="btn btn-primary">更新</button>
